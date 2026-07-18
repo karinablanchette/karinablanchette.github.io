@@ -1,0 +1,7 @@
+.DS_Store
+output/
+*.pdf
+*.jpg
+*.jpeg
+!portrait-karina.jpg
+exec-*.png

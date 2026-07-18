@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Karina Blanchette monogram</title>
+  <desc id="desc">A dark KB monogram inside a lime green precision-cut tile.</desc>
+  <path fill="#b8e875" d="M16 4h32c6.63 0 12 5.37 12 12v32c0 6.63-5.37 12-12 12H11l-7-7V16C4 9.37 9.37 4 16 4Z"/>
+  <path fill="#0a0d09" d="M13 14h6.4v13.52L30.1 14h7.72L24.7 30.03 38.7 50h-7.8L20.42 34.72l-1.02 1.22V50H13V14Z"/>
+  <path fill="#0a0d09" fill-rule="evenodd" d="M35.5 14h9.35c7.02 0 11.15 3.39 11.15 9.02 0 3.59-1.72 6.19-4.83 7.62 3.89 1.35 5.83 4.31 5.83 8.52C57 46.06 52.27 50 44.24 50H35.5V14Zm6.32 5.54v8.74h2.34c3.67 0 5.5-1.47 5.5-4.41 0-2.89-1.82-4.33-5.45-4.33h-2.39Zm0 14.1v10.82h2.68c4.08 0 6.12-1.8 6.12-5.41 0-3.61-2.09-5.41-6.28-5.41h-2.52Z"/>
+  <path fill="none" stroke="#d8ffa7" stroke-linecap="round" stroke-width="1.2" d="M16 7.5h30" opacity=".6"/>
+</svg>
