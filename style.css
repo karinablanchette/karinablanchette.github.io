@@ -755,12 +755,27 @@ img {
 }
 
 .capability-platform {
-    grid-column: 4 / span 9;
+    grid-column: 1 / -1;
     min-height: 21rem;
     border-radius: 1.4rem 0.4rem 1.4rem 1.4rem;
     display: grid;
-    grid-template-columns: 1fr minmax(18rem, 0.75fr);
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(2rem, 5vw, 5rem);
+    row-gap: 2.5rem;
+}
+
+.capability-platform .card-topline {
+    grid-column: 1 / -1;
+}
+
+.capability-platform > div:nth-child(2) {
+    align-self: end;
+}
+
+.capability-platform .platform-tags {
+    align-self: end;
+    justify-content: flex-end;
 }
 
 .card-topline {
@@ -1365,9 +1380,6 @@ img {
         right: 0;
     }
 
-    .capability-platform {
-        grid-column: span 12;
-    }
 }
 
 @media (max-width: 900px) {
@@ -1602,8 +1614,9 @@ img {
     }
 
     .capability-platform {
-        min-height: 29rem;
+        min-height: 0;
         display: flex;
+        gap: 2.5rem;
     }
 
     .platform-tags {
