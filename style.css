@@ -4,15 +4,15 @@
     --surface: #0e120d;
     --surface-2: #131812;
     --text: #eef2e9;
-    --muted: #929b8d;
-    --faint: #657060;
+    --muted: #abb3a5;
+    --faint: #929d8a;
     --accent: #b8e875;
     --accent-dark: #161d0e;
     --line: rgba(226, 239, 218, 0.12);
     --line-strong: rgba(226, 239, 218, 0.22);
     --mono: "IBM Plex Mono", monospace;
     --sans: "Manrope", sans-serif;
-    --shell: min(1400px, calc(100vw - 6rem));
+    --shell: min(1400px, calc(100% - 6rem));
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -729,7 +729,6 @@ img {
     z-index: 2;
     border-color: rgba(184, 232, 117, 0.34);
     background: #10150e;
-    transform: translateY(-5px);
 }
 
 .capability:hover::before {
@@ -1384,7 +1383,7 @@ img {
 
 @media (max-width: 900px) {
     :root {
-        --shell: calc(100vw - 2rem);
+        --shell: calc(100% - 2rem);
     }
 
     .site-nav {
@@ -1495,7 +1494,7 @@ img {
 
 @media (max-width: 640px) {
     :root {
-        --shell: calc(100vw - 1.25rem);
+        --shell: calc(100% - 2rem);
     }
 
     html {
@@ -1736,6 +1735,87 @@ img {
 
 @keyframes ticker {
     to { transform: translateX(-30%); }
+}
+
+/* Shared editorial layout for both employment profiles. */
+.noise-overlay { opacity: 0.018; }
+.hero { gap: clamp(2.5rem, 5vw, 6rem); }
+.hero-meta { font-size: 0.72rem; }
+.hero-intro > p { max-width: 40ch; }
+.hero-stats dd { font-size: 0.72rem; }
+.availability i { animation: none; box-shadow: none; }
+.scan-line { display: none; }
+.signal-card strong { font-size: 1.7rem; letter-spacing: -0.05em; }
+.signal-reading { font-size: 0.68rem; }
+.manifesto { padding-block: clamp(6rem, 10vw, 10rem); }
+.expertise, .experience { padding-bottom: clamp(6rem, 10vw, 10rem); }
+.section-heading { margin-bottom: clamp(3rem, 5vw, 5rem); }
+.section-index, .eyebrow { font-size: 0.72rem; }
+.capability-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.25rem; }
+.capability-grid > .capability {
+    grid-column: auto;
+    grid-row: auto;
+    min-width: 0;
+    min-height: 25rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+    border-radius: 1.25rem;
+}
+.capability .card-topline { flex: 0 0 auto; font-size: 0.66rem; gap: 1rem; }
+.capability h3 { font-size: clamp(1.7rem, 2.4vw, 2.5rem); line-height: 1.15; }
+.capability > div > p:last-child { font-size: 0.96rem; }
+.capability .test-console { margin-block: 0; }
+.capability .tag-list, .capability .api-signature, .capability .platform-tags { margin-top: auto; }
+.capability-platform > div:nth-child(2), .capability-platform .platform-tags { align-self: auto; }
+.capability-platform .platform-tags { justify-content: flex-start; }
+.tag-list span, .platform-tags span { font-size: 0.67rem; }
+.experience-current { border-top-color: var(--accent); }
+.experience-current h3 { color: var(--accent); }
+.contact { margin-top: clamp(6rem, 10vw, 10rem); padding-top: 0; }
+#contact { scroll-margin-top: 1rem; }
+.contact-eyebrow { margin-bottom: 1.5rem; font: 500 0.72rem var(--mono); }
+.contact-card .contact-copy > .contact-eyebrow { color: var(--accent-dark); margin-top: 0; font-size: 0.72rem; }
+.contact-copy a:focus-visible { outline-color: var(--bg-deep); }
+.form-heading em, .form-status { font-size: 0.68rem; }
+.nav-links a, .nav-resume, .text-link, .contact-link, .footer-credit {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+.footer-credit { font-size: 0.65rem; }
+.copyright { font-size: 0.7rem; }
+.button:active, .form-submit:active { transform: translateY(1px); }
+.not-found { min-height: 100dvh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2rem; }
+.not-found h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: 1.05; letter-spacing: -0.065em; }
+.not-found > p { max-width: 45ch; }
+@media (max-width: 900px) {
+    html { scroll-padding-top: 9rem; }
+    .nav-shell { grid-template-columns: 1fr auto; padding: 0.5rem 0.7rem; }
+    .nav-links { display: flex; grid-column: 1 / -1; grid-row: 2; justify-content: center; border: 0; padding: 0; }
+    .nav-links a { flex: 1; justify-content: center; }
+    .nav-resume { grid-column: 2; grid-row: 1; }
+    .hero { padding-top: 10rem; }
+    .capability-grid { grid-template-columns: minmax(0, 1fr); }
+    .capability-grid > .capability { min-height: 0; gap: 2rem; }
+    .hero-visual { width: min(100%, 35rem); }
+    .hero-meta { flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+    .hero-meta { font-size: 0.65rem; }
+    .hero-stats dt { font-size: 1.6rem; }
+    .hero-stats dd { font-size: 0.64rem; }
+    .hero-visual { min-height: 32rem; }
+    .portrait-frame { height: 32rem; min-height: 0; }
+    .portrait-hud { height: 30.4rem; min-height: 0; }
+    .section-summary { margin-left: 0; max-width: 40ch; }
+    .manifesto-copy > p { margin-left: 0; }
+    .contact-card h2 { font-size: clamp(3rem, 14vw, 4.5rem); }
+    .form-grid input, .form-grid textarea { font-size: 1rem; }
+    .experience-date { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

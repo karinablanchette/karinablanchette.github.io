@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#080a07">
-    <meta name="description" content="Karina Blanchette is a NYC-based QA Engineer, now at Evos since September 2026. Test automation, API and data validation for software people can trust.">
+    <meta name="description" content="{{description}}">
     <meta name="author" content="Karina Blanchette">
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <meta property="og:title" content="Karina Blanchette — QA Engineer">
-    <meta property="og:description" content="Karina Blanchette is a NYC-based QA Engineer, now at Evos since September 2026. Test automation, API and data validation for software people can trust.">
+    <meta property="og:description" content="{{description}}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://karinablanchette.github.io/">
     <meta property="og:site_name" content="Karina Blanchette">
@@ -23,11 +23,11 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Karina Blanchette — QA Engineer">
-    <meta name="twitter:description" content="Karina Blanchette is a NYC-based QA Engineer, now at Evos since September 2026. Test automation, API and data validation for software people can trust.">
+    <meta name="twitter:description" content="{{description}}">
     <meta name="twitter:image" content="https://karinablanchette.github.io/og-karina-blanchette-v2.jpg">
     <meta name="twitter:image:alt" content="Karina Blanchette, QA Engineer — Software people can trust.">
 
-    <title>Karina Blanchette — QA Engineer | Currently at Evos</title>
+    <title>Karina Blanchette — QA Engineer | {{pageTitle}}</title>
     <link rel="canonical" href="https://karinablanchette.github.io/">
     <link rel="image_src" href="https://karinablanchette.github.io/og-karina-blanchette-v2.jpg">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -63,7 +63,7 @@
         }
     </script>
 </head>
-<body data-employment="employed">
+<body data-employment="{{mode}}">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <div class="page-ambient" aria-hidden="true"></div>
@@ -93,7 +93,7 @@
         <header class="hero" id="top">
             <div class="hero-copy">
                 <div class="hero-meta" data-reveal>
-                    <span class="availability"><i aria-hidden="true"></i> Hired · Now at Evos</span>
+                    <span class="availability"><i aria-hidden="true"></i> {{availability}}</span>
                     <span class="ny-time"><span class="time-label">NYC</span> <strong data-ny-time>--:--</strong></span>
                 </div>
 
@@ -105,7 +105,7 @@
                 </h1>
 
                 <div class="hero-intro" data-reveal>
-                    <p>I bring clear risk signals to complex software. Now at Evos, with experience across healthcare, payments, robotics, and AI validation.</p>
+                    <p>{{introduction}}</p>
                     <div class="hero-actions">
                         <a class="button button-primary magnetic" href="#experience">View experience <span aria-hidden="true">↓</span></a>
                         <a class="text-link magnetic" href="#contact">Start a conversation <span aria-hidden="true">↓</span></a>
@@ -122,8 +122,8 @@
                         <dd>companies along the way</dd>
                     </div>
                     <div>
-                        <dt>EVOS</dt>
-                        <dd>a new chapter · September 2026</dd>
+                        <dt>{{statusLabel}}</dt>
+                        <dd>{{statusDetail}}</dd>
                     </div>
                 </dl>
             </div>
@@ -311,13 +311,13 @@
             <div class="contact-card" data-reveal>
                 <div class="contact-layout">
                     <div class="contact-copy">
-                        <p class="contact-eyebrow">Good work starts with a conversation</p>
-                        <h2 id="contact-title">Stay in touch.</h2>
-                        <p>I’ve joined Evos and am not currently looking for a new role. For a conversation about quality engineering or to reconnect, you’re welcome to reach out.</p>
+                        <p class="contact-eyebrow">{{contactEyebrow}}</p>
+                        <h2 id="contact-title">{{contactTitle}}</h2>
+                        <p>{{contactCopy}}</p>
                         <div class="contact-actions">
                             <a class="contact-link magnetic" href="mailto:karinablanchette1@gmail.com">Email <span aria-hidden="true">↗</span></a>
                             <a class="contact-link magnetic" href="https://www.linkedin.com/in/karina-blanchette" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-
+                            {{resumeLink}}
                         </div>
                     </div>
 
@@ -341,7 +341,7 @@
                             </label>
                             <label class="form-wide">
                                 <span>Message *</span>
-                                <textarea name="message" rows="4" minlength="12" required placeholder="What would you like to connect about?"></textarea>
+                                <textarea name="message" rows="4" minlength="12" required placeholder="{{messagePlaceholder}}"></textarea>
                             </label>
                         </div>
                         <div class="form-submit-row">

@@ -1,0 +1,46 @@
+name: Keep job-market version in sync
+on:
+  push:
+    branches: [codex/employed]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-profile-branches
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: codex/employed
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Merge shared improvements and rebuild the job-market page
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git show-ref --verify --quiet refs/remotes/origin/codex/job-market; then
+            git switch --create codex/job-market --track origin/codex/job-market
+            if ! git merge --no-commit --no-ff origin/codex/employed; then
+              conflicts=$(git diff --name-only --diff-filter=U)
+              if [ "$conflicts" != 'index.html' ]; then
+                git merge --abort
+                echo 'Shared-source conflict: resolve manually to preserve both versions.'
+                exit 1
+              fi
+            fi
+          else
+            git switch --create codex/job-market
+          fi
+          node scripts/build.mjs --profile seeking --output .
+          node --test tests/*.test.mjs
+          git add index.html
+          if ! git diff --cached --quiet || [ -f .git/MERGE_HEAD ]; then
+            git commit -m 'Sync shared portfolio improvements into job-market profile'
+          fi
+          git push origin codex/job-market

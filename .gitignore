@@ -4,4 +4,6 @@ output/
 *.jpg
 *.jpeg
 !portrait-karina.jpg
+!og-karina-blanchette-v2.jpg
 exec-*.png
+dist/
