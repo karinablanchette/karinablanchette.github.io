@@ -1,0 +1,26 @@
+{
+  "employed": {
+    "pageTitle": "Currently at Evos",
+    "description": "Karina Blanchette is a NYC-based QA Engineer, now at Evos since September 2026. Test automation, API and data validation for software people can trust.",
+    "availability": "Hired · Now at Evos",
+    "introduction": "I bring clear risk signals to complex software. Now at Evos, with experience across healthcare, payments, robotics, and AI validation.",
+    "statusLabel": "EVOS",
+    "statusDetail": "a new chapter · September 2026",
+    "contactEyebrow": "Good work starts with a conversation",
+    "contactTitle": "Stay in touch.",
+    "contactCopy": "I’ve joined Evos and am not currently looking for a new role. For a conversation about quality engineering or to reconnect, you’re welcome to reach out.",
+    "messagePlaceholder": "What would you like to connect about?"
+  },
+  "seeking": {
+    "pageTitle": "Open to Remote & Hybrid Roles",
+    "description": "Karina Blanchette is a NYC-based Senior QA Engineer open to remote and hybrid positions. Test automation, API and data validation for software people can trust.",
+    "availability": "Open to remote & hybrid positions",
+    "introduction": "I’m exploring Senior QA opportunities with remote and NYC-area hybrid teams that care about clear risk signals and reliable releases.",
+    "statusLabel": "OPEN",
+    "statusDetail": "remote + NYC-area hybrid roles",
+    "contactEyebrow": "Let’s build something reliable",
+    "contactTitle": "Let’s talk.",
+    "contactCopy": "I’m NYC based and open to remote or NYC-area hybrid Senior QA positions. If my experience could strengthen your team, I’d be glad to learn more.",
+    "messagePlaceholder": "Tell me a little about the role and your team."
+  }
+}

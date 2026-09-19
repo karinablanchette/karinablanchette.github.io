@@ -1,5 +1,3 @@
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = window.matchMedia("(pointer: fine)").matches;
 const nav = document.querySelector(".site-nav");
 const progress = document.querySelector(".scroll-progress span");
 
@@ -46,7 +44,10 @@ if ("IntersectionObserver" in window) {
             if (!entry.isIntersecting) return;
 
             navLinks.forEach((link) => {
-                link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+                const active = link.getAttribute("href") === `#${entry.target.id}`;
+                link.classList.toggle("active", active);
+                if (active) link.setAttribute("aria-current", "location");
+                else link.removeAttribute("aria-current");
             });
         });
     }, { rootMargin: "-35% 0px -58% 0px", threshold: 0 });
@@ -73,7 +74,8 @@ if (contactForm) {
 
         if (invalidFields.length) {
             invalidFields.forEach((field) => field.setAttribute("aria-invalid", "true"));
-            formStatus.textContent = "Please complete the required fields before continuing.";
+            formStatus.textContent = `Please check ${invalidFields[0].labels[0].textContent.trim().replace(' *', '')}: ${invalidFields[0].validationMessage}`;
+            invalidFields.forEach((field) => field.setAttribute("aria-describedby", "form-status"));
             formStatus.classList.add("error");
             invalidFields[0].focus();
             return;
@@ -106,99 +108,4 @@ if (contactForm) {
     });
 }
 
-if (finePointer && !reducedMotion) {
-    const glow = document.querySelector(".cursor-glow");
-
-    if (glow) {
-        const moveWithGsap = Boolean(window.gsap);
-        const moveX = moveWithGsap ? gsap.quickTo(glow, "x", { duration: 0.65, ease: "power3.out" }) : null;
-        const moveY = moveWithGsap ? gsap.quickTo(glow, "y", { duration: 0.65, ease: "power3.out" }) : null;
-
-        if (moveWithGsap) {
-            gsap.set(glow, { xPercent: -50, yPercent: -50 });
-        }
-
-        window.addEventListener("pointermove", (event) => {
-            glow.style.opacity = "1";
-
-            if (moveWithGsap) {
-                moveX(event.clientX);
-                moveY(event.clientY);
-            } else {
-                glow.style.transform = `translate(${event.clientX - glow.offsetWidth / 2}px, ${event.clientY - glow.offsetHeight / 2}px)`;
-            }
-        }, { passive: true });
-    }
-}
-
-if (window.gsap && window.ScrollTrigger && !reducedMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-    intro
-        .from(".site-nav", { y: -24, opacity: 0, duration: 0.8 })
-        .from(".hero-meta, .eyebrow", { y: 16, opacity: 0, duration: 0.7, stagger: 0.1 }, "-=0.45")
-        .from(".hero-line > span", { yPercent: 112, duration: 1.1, stagger: 0.09 }, "-=0.55")
-        .from(".hero-intro, .hero-stats", { y: 22, opacity: 0, duration: 0.85, stagger: 0.12 }, "-=0.65")
-        .from("[data-portrait]", { clipPath: "inset(0 0 100% 0)", duration: 1.25 }, "-=1.1")
-        .from(".signal-card", { y: 24, opacity: 0, duration: 0.7 }, "-=0.35");
-
-    gsap.to(".portrait-frame img", {
-        yPercent: 6,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1
-        }
-    });
-
-    document.querySelectorAll("[data-reveal]").forEach((element) => {
-        if (element.closest(".hero")) return;
-
-        gsap.from(element, {
-            y: 34,
-            opacity: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: element,
-                start: "top 88%",
-                once: true
-            }
-        });
-    });
-
-    gsap.utils.toArray(".experience-item").forEach((item) => {
-        gsap.fromTo(item,
-            { borderColor: "rgba(226, 239, 218, 0.08)" },
-            {
-                borderColor: "rgba(184, 232, 117, 0.3)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 68%",
-                    end: "bottom 45%",
-                    scrub: true
-                }
-            }
-        );
-    });
-
-    if (finePointer) {
-        document.querySelectorAll(".magnetic").forEach((element) => {
-            element.addEventListener("pointermove", (event) => {
-                const bounds = element.getBoundingClientRect();
-                const x = event.clientX - bounds.left - bounds.width / 2;
-                const y = event.clientY - bounds.top - bounds.height / 2;
-                gsap.to(element, { x: x * 0.12, y: y * 0.12, duration: 0.35, ease: "power2.out" });
-            });
-
-            element.addEventListener("pointerleave", () => {
-                gsap.to(element, { x: 0, y: 0, duration: 0.65, ease: "elastic.out(1, 0.35)" });
-            });
-        });
-    }
-}
+// Keep content visible at first paint; subtle motion must never gate reading.
