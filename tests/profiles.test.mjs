@@ -16,6 +16,9 @@ for (const mode of ['employed', 'seeking']) {
             assert.ok(!html.includes('CVS Health'));
             assert.ok(html.includes('2020 — 2023'));
             assert.ok(!html.includes('cdnjs.cloudflare.com'), 'reading must not depend on animation libraries');
+            assert.match(html, /https:\/\/www\.linkedin\.com\/in\/karina-blanchette/);
+            assert.match(html, /https:\/\/github\.com\/karinablanchette/);
+            assert.match(html, /mailto:karinablanchette1@gmail\.com/);
             const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
             assert.equal(schema.worksFor.name, 'Evos');
             const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
